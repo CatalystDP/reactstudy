@@ -22,9 +22,9 @@ var CommentBox =React.createClass({
         this.setState(_data);
     },
     componentDidMount:function() {
-        setTimeout(function () {
+        //setTimeout(function () {
             this.setState({data: data});
-        }.bind(this), 1000);
+        //}.bind(this), 1000);
     },
     render:function() {
         return (
@@ -57,8 +57,8 @@ CommentBox.CommentList = React.createClass({
 var Comment = React.createClass({
     render: function () {
         return (
-            <div className="comment">
-                <span>{this.props.id}</span>
+            <div className="comment" >
+                <span >{this.props.id}</span>
                 <h2 className="commentAuthor">
                     {this.props.author}
                 </h2>
@@ -92,13 +92,16 @@ var CommentForm = React.createClass({
             text:this.refs.text.value
         });
     },
+    getInitialState:function(){
+
+    },
     onAuthorChange:function(){
         console.log('author change ',this.value);
     },
     render:function(){
         return (
             <div className="commentForm">
-                <input type="text" name="author" ref="author" onChange={this.onAuthorChange}/>
+                <input type="text" name="author" ref="author" onInput={this.onAuthorChange}/>
                 <br/>
                 <input type="text" name="text" ref="text"/>
                 <button onClick={this.handlerFormSubmit}>评论</button>

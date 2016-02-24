@@ -20,9 +20,9 @@ var CommentBox = React.createClass({
         this.setState(_data);
     },
     componentDidMount: function () {
-        setTimeout((function () {
-            this.setState({ data: data });
-        }).bind(this), 1000);
+        //setTimeout(function () {
+        this.setState({ data: data });
+        //}.bind(this), 1000);
     },
     render: function () {
         return React.createElement(
@@ -107,6 +107,7 @@ var CommentForm = React.createClass({
             text: this.refs.text.value
         });
     },
+    getInitialState: function () {},
     onAuthorChange: function () {
         console.log('author change ', this.value);
     },
@@ -114,7 +115,7 @@ var CommentForm = React.createClass({
         return React.createElement(
             'div',
             { className: 'commentForm' },
-            React.createElement('input', { type: 'text', name: 'author', ref: 'author', onChange: this.onAuthorChange }),
+            React.createElement('input', { type: 'text', name: 'author', ref: 'author', onInput: this.onAuthorChange }),
             React.createElement('br', null),
             React.createElement('input', { type: 'text', name: 'text', ref: 'text' }),
             React.createElement(
