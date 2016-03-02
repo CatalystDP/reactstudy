@@ -92,9 +92,6 @@ var CommentForm = React.createClass({
             text:this.refs.text.value
         });
     },
-    getInitialState:function(){
-
-    },
     onAuthorChange:function(){
         console.log('author change ',this.value);
     },

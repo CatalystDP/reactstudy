@@ -11,20 +11,20 @@ var data = [{ author: 'dp', text: 'the author is dp' }, { author: 'mz', text: 't
 //}
 //var a=new A();
 var CommentBox = React.createClass({
-    getInitialState: function () {
+    getInitialState: function getInitialState() {
         return { data: [] };
     },
-    addComment: function (comment) {
+    addComment: function addComment(comment) {
         var _data = this.state.data;
         _data.push(comment);
         this.setState(_data);
     },
-    componentDidMount: function () {
+    componentDidMount: function componentDidMount() {
         //setTimeout(function () {
         this.setState({ data: data });
         //}.bind(this), 1000);
     },
-    render: function () {
+    render: function render() {
         return React.createElement(
             'div',
             { className: 'commentBox' },
@@ -40,7 +40,7 @@ var CommentBox = React.createClass({
 });
 
 CommentBox.CommentList = React.createClass({
-    render: function () {
+    render: function render() {
         var comments = [];
         this.props.data.forEach(function (comment, index) {
             comments.push(React.createElement(
@@ -62,7 +62,7 @@ CommentBox.CommentList = React.createClass({
     }
 });
 var Comment = React.createClass({
-    render: function () {
+    render: function render() {
         return React.createElement(
             'div',
             { className: 'comment' },
@@ -82,17 +82,17 @@ var Comment = React.createClass({
     }
 });
 CommentBox.LikeButton = React.createClass({
-    getInitialState: function () {
+    getInitialState: function getInitialState() {
         return {
             isLike: false
         };
     },
-    onLikeBtnClick: function (e) {
+    onLikeBtnClick: function onLikeBtnClick(e) {
         this.setState({
             isLike: !this.state.isLike
         });
     },
-    render: function () {
+    render: function render() {
         return React.createElement(
             'button',
             { onClick: this.onLikeBtnClick },
@@ -101,17 +101,16 @@ CommentBox.LikeButton = React.createClass({
     }
 });
 var CommentForm = React.createClass({
-    handlerFormSubmit: function (e) {
+    handlerFormSubmit: function handlerFormSubmit(e) {
         this.props.addComment({
             author: this.refs.author.value,
             text: this.refs.text.value
         });
     },
-    getInitialState: function () {},
-    onAuthorChange: function () {
+    onAuthorChange: function onAuthorChange() {
         console.log('author change ', this.value);
     },
-    render: function () {
+    render: function render() {
         return React.createElement(
             'div',
             { className: 'commentForm' },
@@ -127,3 +126,4 @@ var CommentForm = React.createClass({
     }
 });
 var commentBox = ReactDOM.render(React.createElement(CommentBox, null), document.querySelector('#wrapper'));
+//# sourceMappingURL=commentbox.js.map
